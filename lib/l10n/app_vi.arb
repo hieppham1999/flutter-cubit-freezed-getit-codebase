@@ -1,0 +1,28 @@
+{
+  "appName": "QR Generator",
+  "btnGenerate": "Tạo",
+  "titleColorPicker": "Chọn màu",
+  "buttonSelect": "Chọn",
+  "buttonCancel": "Huỷ",
+  "homeTab": "Trang chủ",
+  "save": "Lưu",
+  "reset": "Cài lại",
+  "customize": "Tùy chỉnh",
+  "preview": "Xem trước",
+  "createQr": "Tạo mã Qr",
+  "updateQr": "Cập nhật",
+  "english": "Tiếng Anh",
+  "english_native": "English",
+  "vietnamese": "Tiếng Việt",
+  "vietnamese_native": "Tiếng Việt",
+  "language": "Ngôn ngữ",
+  "settings": "Cài đặt",
+  "darkMode": "Chế độ tối",
+  "themeColor": "Màu chủ đề",
+  "qrCustomizations": "Tùy chỉnh mã Qr",
+  "qrSaved": "Mã Qr đã được lưu!",
+  "copiedToClipboard": "Đã sao chép vào bộ nhớ đệm!",
+  "scannedQrList": "Scanned QR Codes",
+  "emptyQrList": "No scanned QR codes yet."
+
+}
