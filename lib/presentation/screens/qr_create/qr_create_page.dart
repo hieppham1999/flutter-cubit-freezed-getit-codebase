@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/base/bloc_state_builder.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/languages.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/qr_model/qr_model.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/di/injection.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_navigator.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_routes.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/bloc_state_builder.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
+// import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart' hide QrModel;
+import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_navigator.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_routes.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/extension/qr_extension.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/components/qr_customization.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_cubit.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_state.dart';
@@ -12,7 +15,7 @@ import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_di
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_scaffold.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_textfield.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/read_only_text_box.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+import 'package:qr_flutter/qr_flutter.dart' show QrImageView;
 
 class QrCreatePage extends StatefulWidget {
   const QrCreatePage({super.key});
@@ -96,11 +99,11 @@ class _QrCreatePageState extends State<QrCreatePage> {
                             child: QrImageView(
                               data: qrModel.content ?? '',
                               version: qrModel.version,
-                              eyeStyle: qrModel.eyeStyle.toLib(),
-                              dataModuleStyle: qrModel.moduleStyle.toLib(),
+                              eyeStyle: qrModel.decoration.eyeStyle.toLib(),
+                              dataModuleStyle: qrModel.decoration.moduleStyle.toLib(),
                               embeddedImageEmitsError: true,
                               size: MediaQuery.of(context).size.width * 0.7,
-                              backgroundColor: qrModel.backgroundColor,
+                              backgroundColor: Color(qrModel.decoration.backgroundColor),
                             ),
                           ),
                           SizedBox(height: 16),

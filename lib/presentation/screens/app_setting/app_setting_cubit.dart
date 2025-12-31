@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/base/base_cubit.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/app_language/app_language.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/app_settings/app_settings.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/repository/app_setting_repository.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/app_settings/app_settings.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/repositories/app_setting_repository.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/base_cubit.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
@@ -36,7 +36,7 @@ class SettingsCubit extends BaseCubit<AppSettings> {
 
   Future<void> changeColorSeed(Color color) async {
 
-    final newAppSetting = currentData.copyWith(colorSchemeSeed: color);
+    final newAppSetting = currentData.copyWith(colorSchemeSeed: color.toARGB32());
 
     await appSettingRepository.setAppSetting(newAppSetting).whenComplete(() {
       emitNormal(newAppSetting);

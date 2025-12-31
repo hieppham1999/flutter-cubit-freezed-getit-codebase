@@ -1,6 +1,6 @@
-import 'package:flutter_cubit_freezed_getit_codebase/base/base_cubit.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/qr_model/qr_model.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/repository/qr_repositories.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/repositories/qr_repository.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/base_cubit.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_state.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,8 +16,7 @@ class QrCreateCubit extends BaseCubit<QrCreateState> {
 
   void updateQrData(String data) {
     if (data.isNotEmpty) {
-      currentData.qrModel.content = data;
-      emitNormal(currentData);
+      emitNormal(currentData.copyWith(qrModel: currentData.qrModel.copyWith(content: data)));
     } else {
       emitError("Not a valid text");
     }
