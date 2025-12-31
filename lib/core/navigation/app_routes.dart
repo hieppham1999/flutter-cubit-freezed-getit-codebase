@@ -11,7 +11,7 @@ class SettingsRoute extends AppRoutes {
 
 class QrCreateRoute extends AppRoutes {
   final String? id;
-  final QrCode? qrModel;
+  final QrModel? qrModel;
 
   const QrCreateRoute({this.id, this.qrModel,})
       : super(path: '/qr-create');

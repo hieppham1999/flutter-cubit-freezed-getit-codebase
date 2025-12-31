@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_decoration.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_dropdown.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_tile.dart';
@@ -15,9 +17,16 @@ class QrCustomization extends StatefulWidget {
 }
 
 class _QrCustomizationState extends State<QrCustomization> {
-  late final QrModel _current = widget.initModel ?? QrModel();
+  late QrModel _current = widget.initModel ?? QrModel.df();
 
   final rowSpace = SizedBox(height: 8);
+
+  void _updateDecoration(
+      QrDecoration Function(QrDecoration) onUpdate) {
+    final newDecoration = onUpdate(_current.decoration);
+    setState(() => _current = _current.copyWith(decoration: newDecoration));
+    widget.onChanged(_current);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +37,11 @@ class _QrCustomizationState extends State<QrCustomization> {
         AppTile(
           label: 'Module color:',
           trailing: ColorPickerDot(
-            selectedColor: _current.moduleStyle.color,
+            selectedColor: Color(_current.decoration.moduleStyle.color),
             onChanged: (color) {
-              setState(() {
-                _current.moduleStyle = _current.moduleStyle.copyWith(
-                  color: color,
-                );
-              });
-              widget.onChanged(_current);
+              _updateDecoration((deco) => deco.copyWith(
+                    moduleStyle: deco.moduleStyle.copyWith(color: color.value),
+                  ));
             },
           ),
         ),
@@ -45,15 +51,12 @@ class _QrCustomizationState extends State<QrCustomization> {
           label: 'Module type:',
           trailing: AppDropdown<ModuleType>(
             items: ModuleType.values,
-            value: _current.moduleStyle.shape,
+            value: _current.decoration.moduleStyle.shape,
             onChanged: (ModuleType? value) {
               if (value == null) return;
-              setState(() {
-                _current.moduleStyle = _current.moduleStyle.copyWith(
-                  shape: value,
-                );
-              });
-              widget.onChanged(_current);
+              _updateDecoration((deco) => deco.copyWith(
+                    moduleStyle: deco.moduleStyle.copyWith(shape: value),
+                  ));
             },
             itemBuilder: (ModuleType item) {
               return Text(item.displayName);
@@ -68,17 +71,11 @@ class _QrCustomizationState extends State<QrCustomization> {
         AppTile(
           label: 'Eye color:',
           trailing: ColorPickerDot(
-            selectedColor: _current.eyeStyle.color,
+            selectedColor: Color(_current.decoration.eyeStyle.color),
             onChanged: (color) {
-              setState(() {
-                _current.eyeStyle = _current.eyeStyle.copyWith(color: color);
-
-                // _current = _current.copyWith(
-                //   eyeStyle: _current.eyeStyle.copyWith(color: color),
-                // );
-              });
-
-              widget.onChanged(_current);
+              _updateDecoration((deco) => deco.copyWith(
+                    eyeStyle: deco.eyeStyle.copyWith(color: color.value),
+                  ));
             },
           ),
         ),
@@ -88,15 +85,12 @@ class _QrCustomizationState extends State<QrCustomization> {
           label: 'Eye type:',
           trailing: AppDropdown<EyeType>(
             items: EyeType.values,
-            value: _current.eyeStyle.shape,
+            value: _current.decoration.eyeStyle.shape,
             onChanged: (EyeType? value) {
               if (value == null) return;
-              setState(() {
-                _current.eyeStyle = _current.eyeStyle.copyWith(
-                  shape: value,
-                );
-              });
-              widget.onChanged(_current);
+              _updateDecoration((deco) => deco.copyWith(
+                    eyeStyle: deco.eyeStyle.copyWith(shape: value),
+                  ));
             },
             itemBuilder: (EyeType item) {
               return Text(item.displayName);
@@ -109,15 +103,11 @@ class _QrCustomizationState extends State<QrCustomization> {
         AppTile(
           label: 'Background color:',
           trailing: ColorPickerDot(
-            selectedColor: _current.backgroundColor,
+            selectedColor: Color(_current.decoration.backgroundColor),
             onChanged: (color) {
-              setState(() {
-                _current.backgroundColor = color;
-
-                // _current = _current.copyWith(backgroundColor: color);
-              });
-
-              widget.onChanged(_current);
+              _updateDecoration((deco) => deco.copyWith(
+                    backgroundColor: color.value,
+                  ));
             },
           ),
         ),

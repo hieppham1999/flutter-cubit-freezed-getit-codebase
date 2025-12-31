@@ -10,7 +10,7 @@ class QrRepositoryImpl implements QrRepository {
   QrRepositoryImpl(this.localDataSource);
 
   @override
-  Future<void> saveQr(QrCode qrModel) async {
+  Future<void> saveQr(QrModel qrModel) async {
     await localDataSource.insert(qrModel);
   }
 }

@@ -72,7 +72,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
                 AppTile(
                   label: Languages.translate.themeColor,
                   trailing: ColorPickerDot(
-                    selectedColor: state.colorSchemeSeed,
+                    selectedColor: Color(state.colorSchemeSeed),
                     onChanged: (color) {
                       cubit.changeColorSeed(color);
                     },

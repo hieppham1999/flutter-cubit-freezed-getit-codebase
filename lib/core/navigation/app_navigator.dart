@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_routes.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_routes.dart';
 
 class NavigatorKey {
   static final key = GlobalKey<NavigatorState>();

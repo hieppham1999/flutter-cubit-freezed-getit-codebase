@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/bloc_state_builder.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
-// import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart' hide QrCode;
+// import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart' hide QrModel;
 import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_navigator.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_routes.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_navigator.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_routes.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/extension/qr_extension.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/components/qr_customization.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_cubit.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_state.dart';
@@ -97,11 +99,11 @@ class _QrCreatePageState extends State<QrCreatePage> {
                             child: QrImageView(
                               data: qrModel.content ?? '',
                               version: qrModel.version,
-                              eyeStyle: qrModel.eyeStyle.toLib(),
-                              dataModuleStyle: qrModel.moduleStyle.toLib(),
+                              eyeStyle: qrModel.decoration.eyeStyle.toLib(),
+                              dataModuleStyle: qrModel.decoration.moduleStyle.toLib(),
                               embeddedImageEmitsError: true,
                               size: MediaQuery.of(context).size.width * 0.7,
-                              backgroundColor: qrModel.backgroundColor,
+                              backgroundColor: Color(qrModel.decoration.backgroundColor),
                             ),
                           ),
                           SizedBox(height: 16),
@@ -166,9 +168,9 @@ class _QrCreatePageState extends State<QrCreatePage> {
     );
   }
 
-  Future<QrCode?> customizeQr(QrCode current) {
-    QrCode _current = current.copyWith();
-    return showDialog<QrCode>(
+  Future<QrModel?> customizeQr(QrModel current) {
+    QrModel _current = current.copyWith();
+    return showDialog<QrModel>(
       context: context,
       builder:
           (_) => AppDialog(

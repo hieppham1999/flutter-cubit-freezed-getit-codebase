@@ -1,5 +1,4 @@
 import 'package:flutter_cubit_freezed_getit_codebase/data/datasources/local/database/daos/qr_dao.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/models/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:injectable/injectable.dart';
 
@@ -9,7 +8,7 @@ class QrLocalDataSource {
 
   QrLocalDataSource(this.dao);
 
-  Future<void> insert(QrCode entity) => dao.insert(entity);
+  Future<void> insert(QrModel entity) => dao.insert(entity);
 
   Future<List<QrModel>> getAll() => dao.getAll();
 

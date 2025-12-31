@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'app_settings.dart';
+part of '../app_settings.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppSettings {
 
- AppLanguage get language; ThemeMode get themeMode;@ColorConverter() Color get colorSchemeSeed; bool get notificationsEnabled;
+ AppLanguage get language; ThemeMode get themeMode; int get colorSchemeSeed; bool get notificationsEnabled;
 /// Create a copy of AppSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $AppSettingsCopyWith<$Res>  {
   factory $AppSettingsCopyWith(AppSettings value, $Res Function(AppSettings) _then) = _$AppSettingsCopyWithImpl;
 @useResult
 $Res call({
- AppLanguage language, ThemeMode themeMode,@ColorConverter() Color colorSchemeSeed, bool notificationsEnabled
+ AppLanguage language, ThemeMode themeMode, int colorSchemeSeed, bool notificationsEnabled
 });
 
 
@@ -70,7 +70,7 @@ class _$AppSettingsCopyWithImpl<$Res>
 language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as AppLanguage,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
 as ThemeMode,colorSchemeSeed: null == colorSchemeSeed ? _self.colorSchemeSeed : colorSchemeSeed // ignore: cast_nullable_to_non_nullable
-as Color,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
+as int,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -156,7 +156,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode, @ColorConverter()  Color colorSchemeSeed,  bool notificationsEnabled)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode,  int colorSchemeSeed,  bool notificationsEnabled)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppSettings() when $default != null:
 return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notificationsEnabled);case _:
@@ -177,7 +177,7 @@ return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notif
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode, @ColorConverter()  Color colorSchemeSeed,  bool notificationsEnabled)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode,  int colorSchemeSeed,  bool notificationsEnabled)  $default,) {final _that = this;
 switch (_that) {
 case _AppSettings():
 return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notificationsEnabled);case _:
@@ -197,7 +197,7 @@ return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notif
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AppLanguage language,  ThemeMode themeMode, @ColorConverter()  Color colorSchemeSeed,  bool notificationsEnabled)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AppLanguage language,  ThemeMode themeMode,  int colorSchemeSeed,  bool notificationsEnabled)?  $default,) {final _that = this;
 switch (_that) {
 case _AppSettings() when $default != null:
 return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notificationsEnabled);case _:
@@ -212,12 +212,12 @@ return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notif
 @JsonSerializable()
 
 class _AppSettings extends AppSettings {
-  const _AppSettings({this.language = defaultLanguage, this.themeMode = defaultThemeMode, @ColorConverter() this.colorSchemeSeed = defaultColorScheme, this.notificationsEnabled = defaultNotificationsEnabled}): super._();
+  const _AppSettings({this.language = defaultLanguage, this.themeMode = defaultThemeMode, this.colorSchemeSeed = 0xFFFFFFFF, this.notificationsEnabled = defaultNotificationsEnabled}): super._();
   factory _AppSettings.fromJson(Map<String, dynamic> json) => _$AppSettingsFromJson(json);
 
 @override@JsonKey() final  AppLanguage language;
 @override@JsonKey() final  ThemeMode themeMode;
-@override@JsonKey()@ColorConverter() final  Color colorSchemeSeed;
+@override@JsonKey() final  int colorSchemeSeed;
 @override@JsonKey() final  bool notificationsEnabled;
 
 /// Create a copy of AppSettings
@@ -253,7 +253,7 @@ abstract mixin class _$AppSettingsCopyWith<$Res> implements $AppSettingsCopyWith
   factory _$AppSettingsCopyWith(_AppSettings value, $Res Function(_AppSettings) _then) = __$AppSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- AppLanguage language, ThemeMode themeMode,@ColorConverter() Color colorSchemeSeed, bool notificationsEnabled
+ AppLanguage language, ThemeMode themeMode, int colorSchemeSeed, bool notificationsEnabled
 });
 
 
@@ -275,7 +275,7 @@ class __$AppSettingsCopyWithImpl<$Res>
 language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as AppLanguage,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
 as ThemeMode,colorSchemeSeed: null == colorSchemeSeed ? _self.colorSchemeSeed : colorSchemeSeed // ignore: cast_nullable_to_non_nullable
-as Color,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
+as int,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

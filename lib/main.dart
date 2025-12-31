@@ -4,8 +4,8 @@ import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/bloc_stat
 import 'package:flutter_cubit_freezed_getit_codebase/core/theme/theme.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/app_settings/app_settings.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_navigator.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_router.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_navigator.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_router.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/app_setting/app_setting_cubit.dart';
 
 

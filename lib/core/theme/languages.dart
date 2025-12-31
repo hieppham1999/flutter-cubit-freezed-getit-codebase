@@ -1,5 +1,5 @@
-  import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_navigator.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/generated/l10n/app_localizations.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_navigator.dart';
 
 class Languages {
   Languages._();

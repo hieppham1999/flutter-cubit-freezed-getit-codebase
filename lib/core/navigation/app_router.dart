@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/navigation/app_routes.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_routes.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/app_setting/app_setting_page.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_page.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/utils/app_logger.dart';

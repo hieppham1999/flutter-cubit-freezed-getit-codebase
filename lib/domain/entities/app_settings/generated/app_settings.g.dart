@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_settings.dart';
+part of '../app_settings.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -13,24 +13,18 @@ _AppSettings _$AppSettingsFromJson(Map<String, dynamic> json) => _AppSettings(
   themeMode:
       $enumDecodeNullable(_$ThemeModeEnumMap, json['themeMode']) ??
       defaultThemeMode,
-  colorSchemeSeed:
-      json['colorSchemeSeed'] == null
-          ? defaultColorScheme
-          : const ColorConverter().fromJson(
-            (json['colorSchemeSeed'] as num).toInt(),
-          ),
+  colorSchemeSeed: (json['colorSchemeSeed'] as num?)?.toInt() ?? 0xFFFFFFFF,
   notificationsEnabled:
       json['notificationsEnabled'] as bool? ?? defaultNotificationsEnabled,
 );
 
-Map<String, dynamic> _$AppSettingsToJson(
-  _AppSettings instance,
-) => <String, dynamic>{
-  'language': _$AppLanguageEnumMap[instance.language]!,
-  'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
-  'colorSchemeSeed': const ColorConverter().toJson(instance.colorSchemeSeed),
-  'notificationsEnabled': instance.notificationsEnabled,
-};
+Map<String, dynamic> _$AppSettingsToJson(_AppSettings instance) =>
+    <String, dynamic>{
+      'language': _$AppLanguageEnumMap[instance.language]!,
+      'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
+      'colorSchemeSeed': instance.colorSchemeSeed,
+      'notificationsEnabled': instance.notificationsEnabled,
+    };
 
 const _$AppLanguageEnumMap = {AppLanguage.en: 'en', AppLanguage.vi: 'vi'};
 
