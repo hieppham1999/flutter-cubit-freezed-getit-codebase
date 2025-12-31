@@ -1,6 +1,5 @@
 // qr_database.dart
 import 'dart:async';
-import 'package:flutter_cubit_freezed_getit_codebase/data/datasources/local/database/daos/qr_dao.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/data/datasources/local/database/schemas/qr_model_schema.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:injectable/injectable.dart';
