@@ -36,8 +36,7 @@ dependencies:
   auto_size_text_field: ^2.2.4
   collection: ^1.19.1
   equatable: ^2.0.7
-  intl:
-  json_serializable: ^6.9.5
+  intl: any
   json_annotation: ^4.9.0
   qr_flutter: ^4.1.0
   flutter_bloc: ^9.1.1
@@ -47,14 +46,13 @@ dependencies:
   get_it: ^8.0.3
   injectable: ^2.5.0
 
-  # Freezed
-  freezed: ^3.0.6
   freezed_annotation: ^3.0.0
 
   shared_preferences: ^2.5.3
 
   path: ^1.9.1
   sqflite: ^2.4.2
+  uuid: ^4.5.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -64,7 +62,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   injectable_generator:
-  build_runner: ^2.4.15
+  build_runner: ^2.5.4
+  flutter_gen_runner: ^5.10.0
+  # Freezed
+  freezed: ^3.0.6
+  json_serializable: ^6.9.5
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

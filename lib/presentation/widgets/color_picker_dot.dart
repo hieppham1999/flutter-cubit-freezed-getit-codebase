@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/utils/dialogs.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/dialogs.dart';
 
 // const Color _kDefaultSelectedColor = Colors.white;
 

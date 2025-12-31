@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/utils/functions.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/utils/functions.dart';
 
 class AppElevatedButton extends StatelessWidget {
   const AppElevatedButton({

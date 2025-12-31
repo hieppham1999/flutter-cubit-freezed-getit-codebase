@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/base/bloc_state_builder.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/languages.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/app_language/app_language.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/app_settings/app_settings.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/di/injection.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/bloc_state_builder.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/app_settings/app_settings.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/app_setting/app_setting_cubit.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_dropdown.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_scaffold.dart';

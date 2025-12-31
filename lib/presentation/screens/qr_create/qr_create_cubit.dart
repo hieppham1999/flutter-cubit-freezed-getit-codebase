@@ -1,6 +1,6 @@
-import 'package:flutter_cubit_freezed_getit_codebase/base/base_cubit.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/qr_model/qr_model.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/repository/qr_repositories.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/repositories/qr_repository.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/base_cubit.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_state.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,7 +10,7 @@ class QrCreateCubit extends BaseCubit<QrCreateState> {
 
   final QrRepository _repository;
 
-  void updateQrModel(QrModel model) {
+  void updateQrModel(QrCode model) {
     emitNormal(currentData.copyWith(qrModel: model));
   }
 
@@ -23,16 +23,16 @@ class QrCreateCubit extends BaseCubit<QrCreateState> {
     }
   }
 
-  void updateQrStyle(QrModel model) {
+  void updateQrStyle(QrCode model) {
     emitNormal(
       currentData.copyWith(
-          qrModel: QrModel.copyWithStyle(currentData.qrModel, model)),
+          qrModel: QrCode.copyWithStyle(currentData.qrModel, model)),
     );
   }
 
   void resetQrStyle() {
     emitNormal(
-      currentData.copyWith(qrModel: QrModel.defaultStyle(currentData.qrModel)),
+      currentData.copyWith(qrModel: QrCode.defaultStyle(currentData.qrModel)),
     );
   }
 }

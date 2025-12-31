@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/data/model/qr_model/qr_model.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_dropdown.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_tile.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/color_picker_dot.dart';
