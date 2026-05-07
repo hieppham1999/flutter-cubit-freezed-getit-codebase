@@ -9,10 +9,10 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart'
-    as _i194;
-import 'package:flutter_cubit_freezed_getit_codebase/core/utils/app_logger.dart'
-    as _i131;
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/app_logger.dart'
+    as _i967;
+import 'package:flutter_cubit_freezed_getit_codebase/app/di/injection.dart'
+    as _i52;
 import 'package:flutter_cubit_freezed_getit_codebase/core/utils/app_shared_preference.dart'
     as _i126;
 import 'package:flutter_cubit_freezed_getit_codebase/data/datasources/local/database/daos/qr_dao.dart'
@@ -83,11 +83,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i950.QrCreateCubit>(
       () => _i950.QrCreateCubit(gh<_i907.QrRepository>()),
     );
-    gh.singleton<_i131.AppLogger>(() => _i131.AppLogger(gh<_i974.Logger>()));
+    gh.singleton<_i967.AppLogger>(() => _i967.AppLogger(gh<_i974.Logger>()));
     return this;
   }
 }
 
-class _$SharedPreferenceModule extends _i194.SharedPreferenceModule {}
+class _$SharedPreferenceModule extends _i52.SharedPreferenceModule {}
 
-class _$LoggerModule extends _i194.LoggerModule {}
+class _$LoggerModule extends _i52.LoggerModule {}

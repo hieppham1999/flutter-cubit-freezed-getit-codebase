@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/app_state.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/utils/app_logger.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/app_state.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/app_logger.dart';
 
 
 typedef ChildStateBuilder<T> = Widget Function(BuildContext context, T state);

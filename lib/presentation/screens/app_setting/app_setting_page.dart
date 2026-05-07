@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/bloc_state_builder.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/bloc_state_builder.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/app_settings/app_settings.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/di/injection.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/app_setting/app_setting_cubit.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_dropdown.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_scaffold.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/core/theme/color_schemes.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_tile.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/color_picker_dot.dart';
 
 class AppSettingPage extends StatefulWidget {
   const AppSettingPage({super.key});
@@ -18,7 +18,6 @@ class AppSettingPage extends StatefulWidget {
 }
 
 class _AppSettingPageState extends State<AppSettingPage> {
-
   final cubit = getIt.get<SettingsCubit>();
 
   @override
@@ -43,7 +42,7 @@ class _AppSettingPageState extends State<AppSettingPage> {
                     onChanged: (AppLanguage? value) {
                       if (value == null) return;
                       cubit.changeLocale(value);
-                      },
+                    },
                     itemBuilder: (AppLanguage item) {
                       return Text(item.displayName);
                     },
@@ -71,10 +70,29 @@ class _AppSettingPageState extends State<AppSettingPage> {
 
                 AppTile(
                   label: Languages.translate.themeColor,
-                  trailing: ColorPickerDot(
-                    selectedColor: Color(state.colorSchemeSeed),
-                    onChanged: (color) {
-                      cubit.changeColorSeed(color);
+                  trailing: AppDropdown<AppColorTheme>(
+                    items: AppColorTheme.values,
+                    value: state.colorTheme,
+                    onChanged: (AppColorTheme? value) {
+                      if (value == null) return;
+                      cubit.changeColorTheme(value);
+                    },
+                    itemBuilder: (AppColorTheme item) {
+                      return Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            height: 16,
+                            width: 16,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: item.exampleColor,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(item.name),
+                        ],
+                      );
                     },
                   ),
                 ),

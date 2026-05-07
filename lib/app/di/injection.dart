@@ -1,4 +1,4 @@
-import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.config.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/di/injection.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';

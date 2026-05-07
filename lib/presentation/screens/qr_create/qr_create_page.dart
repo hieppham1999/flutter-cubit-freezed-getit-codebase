@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/bloc_state_builder.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/bloc_state_builder.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 // import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart' hide QrModel;
-import 'package:flutter_cubit_freezed_getit_codebase/core/di/injection.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/di/injection.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_navigator.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_routes.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter_cubit_freezed_getit_codebase/domain/repositories/qr_repository.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/presentation/base/base_cubit.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/base_cubit.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_state.dart';
 import 'package:injectable/injectable.dart';

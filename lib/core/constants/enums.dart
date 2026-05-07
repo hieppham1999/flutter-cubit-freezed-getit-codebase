@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 
 enum AppLanguage {
   en(Locale('en')),
