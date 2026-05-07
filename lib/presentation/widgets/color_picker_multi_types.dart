@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 
 class MultipleTypeColorPicker extends StatefulWidget {
   const MultipleTypeColorPicker({
@@ -35,10 +36,10 @@ class _MultipleTypeColorPickerState extends State<MultipleTypeColorPicker> {
         mainAxisSize: MainAxisSize.min,
         children: [
           TabBar(
-            tabs: const <Widget>[
-              Tab(text: 'HSV/HSL/RGB'),
-              Tab(text: 'Material'),
-              Tab(text: 'Blocky'),
+            tabs: <Widget>[
+              Tab(text: Languages.translate.colorPickerTabHsv),
+              Tab(text: Languages.translate.colorPickerTabMaterial),
+              Tab(text: Languages.translate.colorPickerTabBlocky),
             ],
           ),
 

@@ -91,4 +91,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonErrorTitle => 'Something went wrong';
+
+  @override
+  String get tooltipSubmit => 'Submit';
+
+  @override
+  String get tooltipEdit => 'Edit';
+
+  @override
+  String get qrModule => 'QR Module';
+
+  @override
+  String get qrEye => 'QR Eye';
+
+  @override
+  String get moduleColor => 'Module color:';
+
+  @override
+  String get moduleType => 'Module type:';
+
+  @override
+  String get eyeColor => 'Eye color:';
+
+  @override
+  String get eyeType => 'Eye type:';
+
+  @override
+  String get backgroundColor => 'Background color:';
+
+  @override
+  String get textFieldHint => 'Enter text here...';
+
+  @override
+  String get colorPickerTabHsv => 'HSV/HSL/RGB';
+
+  @override
+  String get colorPickerTabMaterial => 'Material';
+
+  @override
+  String get colorPickerTabBlocky => 'Blocky';
+
+  @override
+  String get pageNotFound => 'Page not found';
+
+  @override
+  String get dialogYes => 'Yes';
+
+  @override
+  String get dialogNo => 'No';
 }

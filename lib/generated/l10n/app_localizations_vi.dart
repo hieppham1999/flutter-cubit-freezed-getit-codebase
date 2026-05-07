@@ -78,10 +78,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get copiedToClipboard => 'Đã sao chép vào bộ nhớ đệm!';
 
   @override
-  String get scannedQrList => 'Scanned QR Codes';
+  String get scannedQrList => 'Danh sách mã QR đã quét';
 
   @override
-  String get emptyQrList => 'No scanned QR codes yet.';
+  String get emptyQrList => 'Chưa có mã QR nào được quét.';
 
   @override
   String get commonRetry => 'Thử lại';
@@ -91,4 +91,52 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get commonErrorTitle => 'Đã xảy ra lỗi';
+
+  @override
+  String get tooltipSubmit => 'Xác nhận';
+
+  @override
+  String get tooltipEdit => 'Chỉnh sửa';
+
+  @override
+  String get qrModule => 'Mô-đun QR';
+
+  @override
+  String get qrEye => 'Mắt QR';
+
+  @override
+  String get moduleColor => 'Màu mô-đun:';
+
+  @override
+  String get moduleType => 'Kiểu mô-đun:';
+
+  @override
+  String get eyeColor => 'Màu mắt:';
+
+  @override
+  String get eyeType => 'Kiểu mắt:';
+
+  @override
+  String get backgroundColor => 'Màu nền:';
+
+  @override
+  String get textFieldHint => 'Nhập nội dung tại đây...';
+
+  @override
+  String get colorPickerTabHsv => 'HSV/HSL/RGB';
+
+  @override
+  String get colorPickerTabMaterial => 'Material';
+
+  @override
+  String get colorPickerTabBlocky => 'Blocky';
+
+  @override
+  String get pageNotFound => 'Không tìm thấy trang';
+
+  @override
+  String get dialogYes => 'Có';
+
+  @override
+  String get dialogNo => 'Không';
 }

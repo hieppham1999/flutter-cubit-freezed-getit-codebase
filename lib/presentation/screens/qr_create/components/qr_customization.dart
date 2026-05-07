@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/constants/enums.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_decoration.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
@@ -32,10 +33,10 @@ class _QrCustomizationState extends State<QrCustomization> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Qr Module'),
+        Text(Languages.translate.qrModule),
 
         AppTile(
-          label: 'Module color:',
+          label: Languages.translate.moduleColor,
           trailing: ColorPickerDot(
             selectedColor: Color(_current.decoration.moduleStyle.color),
             onChanged: (color) {
@@ -48,7 +49,7 @@ class _QrCustomizationState extends State<QrCustomization> {
         rowSpace,
 
         AppTile(
-          label: 'Module type:',
+          label: Languages.translate.moduleType,
           trailing: AppDropdown<ModuleType>(
             items: ModuleType.values,
             value: _current.decoration.moduleStyle.shape,
@@ -66,10 +67,10 @@ class _QrCustomizationState extends State<QrCustomization> {
 
         rowSpace,
 
-        Text('Qr Eye'),
+        Text(Languages.translate.qrEye),
 
         AppTile(
-          label: 'Eye color:',
+          label: Languages.translate.eyeColor,
           trailing: ColorPickerDot(
             selectedColor: Color(_current.decoration.eyeStyle.color),
             onChanged: (color) {
@@ -82,7 +83,7 @@ class _QrCustomizationState extends State<QrCustomization> {
         rowSpace,
 
         AppTile(
-          label: 'Eye type:',
+          label: Languages.translate.eyeType,
           trailing: AppDropdown<EyeType>(
             items: EyeType.values,
             value: _current.decoration.eyeStyle.shape,
@@ -101,7 +102,7 @@ class _QrCustomizationState extends State<QrCustomization> {
         rowSpace,
 
         AppTile(
-          label: 'Background color:',
+          label: Languages.translate.backgroundColor,
           trailing: ColorPickerDot(
             selectedColor: Color(_current.decoration.backgroundColor),
             onChanged: (color) {

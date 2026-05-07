@@ -163,7 +163,9 @@ class _QrCreatePageState extends State<QrCreatePage> {
             setEditable(!isContentEditable);
           }
         },
-        tooltip: isContentEditable ? 'Submit' : 'Edit',
+        tooltip: isContentEditable
+            ? Languages.translate.tooltipSubmit
+            : Languages.translate.tooltipEdit,
       ),
     );
   }

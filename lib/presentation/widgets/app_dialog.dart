@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 
 class AppDialog extends StatelessWidget {
   const AppDialog({
@@ -7,8 +8,8 @@ class AppDialog extends StatelessWidget {
     this.body,
     this.onPositive,
     this.onNegative,
-    this.positiveText = 'YES',
-    this.negativeText = 'NO',
+    this.positiveText,
+    this.negativeText,
     this.returnResultValue,
   });
 
@@ -16,8 +17,8 @@ class AppDialog extends StatelessWidget {
   final Widget? body;
   final VoidCallback? onPositive;
   final VoidCallback? onNegative;
-  final String positiveText;
-  final String negativeText;
+  final String? positiveText;
+  final String? negativeText;
   final dynamic Function()? returnResultValue;
 
   @override
@@ -53,7 +54,7 @@ class AppDialog extends StatelessWidget {
                 children: [
                   /// Positive
                   ElevatedButton(
-                    child: Text(positiveText),
+                    child: Text(positiveText ?? Languages.translate.dialogYes),
                     onPressed: () {
                       onPositive?.call();
                       Navigator.of(context).pop(returnResultValue?.call());
@@ -63,7 +64,7 @@ class AppDialog extends StatelessWidget {
 
                   /// Negative
                   ElevatedButton(
-                    child: Text(negativeText),
+                    child: Text(negativeText ?? Languages.translate.dialogNo),
                     onPressed: () {
                       onNegative?.call();
                       Navigator.of(context).pop();
