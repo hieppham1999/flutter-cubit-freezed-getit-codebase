@@ -247,6 +247,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No scanned QR codes yet.'**
   String get emptyQrList;
+
+  /// No description provided for @commonRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get commonRetry;
+
+  /// No description provided for @commonNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available'**
+  String get commonNoData;
+
+  /// No description provided for @commonErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get commonErrorTitle;
 }
 
 class _AppLocalizationsDelegate

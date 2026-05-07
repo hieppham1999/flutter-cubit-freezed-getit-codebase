@@ -9,8 +9,13 @@ const Color _kLoadingBackground = Color(0xA6000000);
 const Color _kLoadingProgress = Color(0xA63AFF19);
 const Color _kLoadingMask = Color(0x80000000);
 
+/// Counter-based loading overlay so concurrent `show`/`dismiss` calls from
+/// independent cubits don't desync the visible state. The overlay stays up
+/// while at least one caller is still "showing" and only dismisses once the
+/// last caller dismisses.
 class LoadingUtil {
-  static bool _isLoading = false;
+  static int _loadingCount = 0;
+  static Timer? _safetyTimer;
 
   static void setup() {
     EasyLoading.instance
@@ -27,10 +32,10 @@ class LoadingUtil {
   }
 
   static Future<void> show({String? status, int? timeOut}) async {
-    _setTimeOut(timeOut: timeOut ?? 30);
-    if (_isLoading) return;
+    _scheduleSafetyDismiss(seconds: timeOut ?? 30);
+    _loadingCount++;
+    if (_loadingCount > 1) return;
 
-    _isLoading = true;
     await EasyLoading.show(
       status: status,
       dismissOnTap: false,
@@ -41,12 +46,22 @@ class LoadingUtil {
           color: _kLoadingProgress,
           lineWidth: 3,
         ),
-      ), // Chặn thao tác người dùng
+      ),
     );
   }
 
   static Future<void> dismiss() async {
-    _isLoading = false;
+    if (_loadingCount > 0) _loadingCount--;
+    if (_loadingCount > 0) return;
+    _safetyTimer?.cancel();
+    await EasyLoading.dismiss();
+  }
+
+  /// Forces the overlay to close regardless of pending callers. Use only when
+  /// you know the counter is out of sync (e.g. after a hot reload).
+  static Future<void> reset() async {
+    _loadingCount = 0;
+    _safetyTimer?.cancel();
     await EasyLoading.dismiss();
   }
 
@@ -59,12 +74,8 @@ class LoadingUtil {
   static Future<void> showInfo(String text, {int duration = 500}) =>
       EasyLoading.showInfo(text, duration: Duration(milliseconds: duration));
 
-  static Timer? _debounce;
-
-  static void _setTimeOut({required int timeOut}) {
-    if (_debounce?.isActive ?? false) _debounce?.cancel();
-    _debounce = Timer(Duration(seconds: timeOut), () {
-      dismiss();
-    });
+  static void _scheduleSafetyDismiss({required int seconds}) {
+    _safetyTimer?.cancel();
+    _safetyTimer = Timer(Duration(seconds: seconds), reset);
   }
 }

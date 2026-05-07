@@ -23,6 +23,8 @@
   "qrSaved": "Mã Qr đã được lưu!",
   "copiedToClipboard": "Đã sao chép vào bộ nhớ đệm!",
   "scannedQrList": "Scanned QR Codes",
-  "emptyQrList": "No scanned QR codes yet."
-
+  "emptyQrList": "No scanned QR codes yet.",
+  "commonRetry": "Thử lại",
+  "commonNoData": "Không có dữ liệu",
+  "commonErrorTitle": "Đã xảy ra lỗi"
 }

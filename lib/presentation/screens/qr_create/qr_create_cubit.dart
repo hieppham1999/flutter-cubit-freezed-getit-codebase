@@ -1,3 +1,4 @@
+import 'package:flutter_cubit_freezed_getit_codebase/domain/exceptions/app_exception.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/repositories/qr_repository.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/app/base/base_cubit.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
@@ -18,7 +19,7 @@ class QrCreateCubit extends BaseCubit<QrCreateState> {
     if (data.isNotEmpty) {
       emitNormal(currentData.copyWith(qrModel: currentData.qrModel.copyWith(content: data)));
     } else {
-      emitError("Not a valid text");
+      emitError(const ValidationException(message: "Not a valid text"));
     }
   }
 

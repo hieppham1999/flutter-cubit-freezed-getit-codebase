@@ -23,5 +23,8 @@
   "qrSaved": "QR Saved!",
   "copiedToClipboard": "Copied to clipboard!",
   "scannedQrList": "Scanned QR Codes",
-  "emptyQrList": "No scanned QR codes yet."
+  "emptyQrList": "No scanned QR codes yet.",
+  "commonRetry": "Retry",
+  "commonNoData": "No data available",
+  "commonErrorTitle": "Something went wrong"
 }

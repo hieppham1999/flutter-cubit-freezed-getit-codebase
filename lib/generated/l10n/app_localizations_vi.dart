@@ -82,4 +82,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get emptyQrList => 'No scanned QR codes yet.';
+
+  @override
+  String get commonRetry => 'Thử lại';
+
+  @override
+  String get commonNoData => 'Không có dữ liệu';
+
+  @override
+  String get commonErrorTitle => 'Đã xảy ra lỗi';
 }

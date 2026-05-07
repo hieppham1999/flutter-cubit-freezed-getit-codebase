@@ -1,4 +1,7 @@
 {
   "FLAVOR": "prod",
-  "APP_NAME": "My Codebase App"
+  "APP_NAME": "My Codebase App",
+  "API_BASE_URL": "https://api.example.com",
+  "ENABLE_LOGGING": false,
+  "ENABLE_CRASH_REPORTING": true
 }

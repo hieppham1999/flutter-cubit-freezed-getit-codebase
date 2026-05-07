@@ -82,4 +82,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emptyQrList => 'No scanned QR codes yet.';
+
+  @override
+  String get commonRetry => 'Retry';
+
+  @override
+  String get commonNoData => 'No data available';
+
+  @override
+  String get commonErrorTitle => 'Something went wrong';
 }

@@ -153,12 +153,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( T data)?  normal,TResult Function( T data)?  loading,TResult Function( String message,  T data)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( T data)?  normal,TResult Function( T data)?  loading,TResult Function( AppException error,  T data)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case NormalState() when normal != null:
 return normal(_that.data);case LoadingState() when loading != null:
 return loading(_that.data);case ErrorState() when error != null:
-return error(_that.message,_that.data);case _:
+return error(_that.error,_that.data);case _:
   return orElse();
 
 }
@@ -176,12 +176,12 @@ return error(_that.message,_that.data);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( T data)  normal,required TResult Function( T data)  loading,required TResult Function( String message,  T data)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( T data)  normal,required TResult Function( T data)  loading,required TResult Function( AppException error,  T data)  error,}) {final _that = this;
 switch (_that) {
 case NormalState():
 return normal(_that.data);case LoadingState():
 return loading(_that.data);case ErrorState():
-return error(_that.message,_that.data);}
+return error(_that.error,_that.data);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -195,12 +195,12 @@ return error(_that.message,_that.data);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( T data)?  normal,TResult? Function( T data)?  loading,TResult? Function( String message,  T data)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( T data)?  normal,TResult? Function( T data)?  loading,TResult? Function( AppException error,  T data)?  error,}) {final _that = this;
 switch (_that) {
 case NormalState() when normal != null:
 return normal(_that.data);case LoadingState() when loading != null:
 return loading(_that.data);case ErrorState() when error != null:
-return error(_that.message,_that.data);case _:
+return error(_that.error,_that.data);case _:
   return null;
 
 }
@@ -344,10 +344,10 @@ as T,
 
 
 class ErrorState<T> implements CubitState<T> {
-  const ErrorState({required this.message, required this.data});
+  const ErrorState({required this.error, required this.data});
   
 
- final  String message;
+ final  AppException error;
 @override final  T data;
 
 /// Create a copy of CubitState
@@ -360,16 +360,16 @@ $ErrorStateCopyWith<T, ErrorState<T>> get copyWith => _$ErrorStateCopyWithImpl<T
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorState<T>&&(identical(other.message, message) || other.message == message)&&const DeepCollectionEquality().equals(other.data, data));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ErrorState<T>&&(identical(other.error, error) || other.error == error)&&const DeepCollectionEquality().equals(other.data, data));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,message,const DeepCollectionEquality().hash(data));
+int get hashCode => Object.hash(runtimeType,error,const DeepCollectionEquality().hash(data));
 
 @override
 String toString() {
-  return 'CubitState<$T>.error(message: $message, data: $data)';
+  return 'CubitState<$T>.error(error: $error, data: $data)';
 }
 
 
@@ -380,7 +380,7 @@ abstract mixin class $ErrorStateCopyWith<T,$Res> implements $CubitStateCopyWith<
   factory $ErrorStateCopyWith(ErrorState<T> value, $Res Function(ErrorState<T>) _then) = _$ErrorStateCopyWithImpl;
 @override @useResult
 $Res call({
- String message, T data
+ AppException error, T data
 });
 
 
@@ -397,10 +397,10 @@ class _$ErrorStateCopyWithImpl<T,$Res>
 
 /// Create a copy of CubitState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? message = null,Object? data = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? error = null,Object? data = freezed,}) {
   return _then(ErrorState<T>(
-message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as AppException,data: freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as T,
   ));
 }
