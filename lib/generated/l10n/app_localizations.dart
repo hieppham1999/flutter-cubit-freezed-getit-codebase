@@ -247,6 +247,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No scanned QR codes yet.'**
   String get emptyQrList;
+
+  /// No description provided for @commonRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get commonRetry;
+
+  /// No description provided for @commonNoData.
+  ///
+  /// In en, this message translates to:
+  /// **'No data available'**
+  String get commonNoData;
+
+  /// No description provided for @commonErrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get commonErrorTitle;
+
+  /// No description provided for @tooltipSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get tooltipSubmit;
+
+  /// No description provided for @tooltipEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get tooltipEdit;
+
+  /// No description provided for @qrModule.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Module'**
+  String get qrModule;
+
+  /// No description provided for @qrEye.
+  ///
+  /// In en, this message translates to:
+  /// **'QR Eye'**
+  String get qrEye;
+
+  /// No description provided for @moduleColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Module color:'**
+  String get moduleColor;
+
+  /// No description provided for @moduleType.
+  ///
+  /// In en, this message translates to:
+  /// **'Module type:'**
+  String get moduleType;
+
+  /// No description provided for @eyeColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Eye color:'**
+  String get eyeColor;
+
+  /// No description provided for @eyeType.
+  ///
+  /// In en, this message translates to:
+  /// **'Eye type:'**
+  String get eyeType;
+
+  /// No description provided for @backgroundColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Background color:'**
+  String get backgroundColor;
+
+  /// No description provided for @textFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter text here...'**
+  String get textFieldHint;
+
+  /// No description provided for @colorPickerTabHsv.
+  ///
+  /// In en, this message translates to:
+  /// **'HSV/HSL/RGB'**
+  String get colorPickerTabHsv;
+
+  /// No description provided for @colorPickerTabMaterial.
+  ///
+  /// In en, this message translates to:
+  /// **'Material'**
+  String get colorPickerTabMaterial;
+
+  /// No description provided for @colorPickerTabBlocky.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocky'**
+  String get colorPickerTabBlocky;
+
+  /// No description provided for @pageNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found'**
+  String get pageNotFound;
+
+  /// No description provided for @dialogYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get dialogYes;
+
+  /// No description provided for @dialogNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get dialogNo;
 }
 
 class _AppLocalizationsDelegate

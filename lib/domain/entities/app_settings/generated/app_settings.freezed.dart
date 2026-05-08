@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppSettings {
 
- AppLanguage get language; ThemeMode get themeMode; int get colorSchemeSeed; bool get notificationsEnabled;
+ AppLanguage get language; ThemeMode get themeMode; AppColorTheme get colorTheme; bool get notificationsEnabled;
 /// Create a copy of AppSettings
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $AppSettingsCopyWith<AppSettings> get copyWith => _$AppSettingsCopyWithImpl<AppS
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppSettings&&(identical(other.language, language) || other.language == language)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.colorSchemeSeed, colorSchemeSeed) || other.colorSchemeSeed == colorSchemeSeed)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppSettings&&(identical(other.language, language) || other.language == language)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.colorTheme, colorTheme) || other.colorTheme == colorTheme)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,language,themeMode,colorSchemeSeed,notificationsEnabled);
+int get hashCode => Object.hash(runtimeType,language,themeMode,colorTheme,notificationsEnabled);
 
 @override
 String toString() {
-  return 'AppSettings(language: $language, themeMode: $themeMode, colorSchemeSeed: $colorSchemeSeed, notificationsEnabled: $notificationsEnabled)';
+  return 'AppSettings(language: $language, themeMode: $themeMode, colorTheme: $colorTheme, notificationsEnabled: $notificationsEnabled)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $AppSettingsCopyWith<$Res>  {
   factory $AppSettingsCopyWith(AppSettings value, $Res Function(AppSettings) _then) = _$AppSettingsCopyWithImpl;
 @useResult
 $Res call({
- AppLanguage language, ThemeMode themeMode, int colorSchemeSeed, bool notificationsEnabled
+ AppLanguage language, ThemeMode themeMode, AppColorTheme colorTheme, bool notificationsEnabled
 });
 
 
@@ -65,12 +65,12 @@ class _$AppSettingsCopyWithImpl<$Res>
 
 /// Create a copy of AppSettings
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? language = null,Object? themeMode = null,Object? colorSchemeSeed = null,Object? notificationsEnabled = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? language = null,Object? themeMode = null,Object? colorTheme = null,Object? notificationsEnabled = null,}) {
   return _then(_self.copyWith(
 language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as AppLanguage,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
-as ThemeMode,colorSchemeSeed: null == colorSchemeSeed ? _self.colorSchemeSeed : colorSchemeSeed // ignore: cast_nullable_to_non_nullable
-as int,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
+as ThemeMode,colorTheme: null == colorTheme ? _self.colorTheme : colorTheme // ignore: cast_nullable_to_non_nullable
+as AppColorTheme,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -156,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode,  int colorSchemeSeed,  bool notificationsEnabled)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode,  AppColorTheme colorTheme,  bool notificationsEnabled)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppSettings() when $default != null:
-return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notificationsEnabled);case _:
+return $default(_that.language,_that.themeMode,_that.colorTheme,_that.notificationsEnabled);case _:
   return orElse();
 
 }
@@ -177,10 +177,10 @@ return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notif
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode,  int colorSchemeSeed,  bool notificationsEnabled)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AppLanguage language,  ThemeMode themeMode,  AppColorTheme colorTheme,  bool notificationsEnabled)  $default,) {final _that = this;
 switch (_that) {
 case _AppSettings():
-return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notificationsEnabled);case _:
+return $default(_that.language,_that.themeMode,_that.colorTheme,_that.notificationsEnabled);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +197,10 @@ return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notif
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AppLanguage language,  ThemeMode themeMode,  int colorSchemeSeed,  bool notificationsEnabled)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( AppLanguage language,  ThemeMode themeMode,  AppColorTheme colorTheme,  bool notificationsEnabled)?  $default,) {final _that = this;
 switch (_that) {
 case _AppSettings() when $default != null:
-return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notificationsEnabled);case _:
+return $default(_that.language,_that.themeMode,_that.colorTheme,_that.notificationsEnabled);case _:
   return null;
 
 }
@@ -212,12 +212,12 @@ return $default(_that.language,_that.themeMode,_that.colorSchemeSeed,_that.notif
 @JsonSerializable()
 
 class _AppSettings extends AppSettings {
-  const _AppSettings({this.language = defaultLanguage, this.themeMode = defaultThemeMode, this.colorSchemeSeed = 0xFFFFFFFF, this.notificationsEnabled = defaultNotificationsEnabled}): super._();
+  const _AppSettings({this.language = defaultLanguage, this.themeMode = defaultThemeMode, this.colorTheme = defaultColorScheme, this.notificationsEnabled = defaultNotificationsEnabled}): super._();
   factory _AppSettings.fromJson(Map<String, dynamic> json) => _$AppSettingsFromJson(json);
 
 @override@JsonKey() final  AppLanguage language;
 @override@JsonKey() final  ThemeMode themeMode;
-@override@JsonKey() final  int colorSchemeSeed;
+@override@JsonKey() final  AppColorTheme colorTheme;
 @override@JsonKey() final  bool notificationsEnabled;
 
 /// Create a copy of AppSettings
@@ -233,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppSettings&&(identical(other.language, language) || other.language == language)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.colorSchemeSeed, colorSchemeSeed) || other.colorSchemeSeed == colorSchemeSeed)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppSettings&&(identical(other.language, language) || other.language == language)&&(identical(other.themeMode, themeMode) || other.themeMode == themeMode)&&(identical(other.colorTheme, colorTheme) || other.colorTheme == colorTheme)&&(identical(other.notificationsEnabled, notificationsEnabled) || other.notificationsEnabled == notificationsEnabled));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,language,themeMode,colorSchemeSeed,notificationsEnabled);
+int get hashCode => Object.hash(runtimeType,language,themeMode,colorTheme,notificationsEnabled);
 
 @override
 String toString() {
-  return 'AppSettings(language: $language, themeMode: $themeMode, colorSchemeSeed: $colorSchemeSeed, notificationsEnabled: $notificationsEnabled)';
+  return 'AppSettings(language: $language, themeMode: $themeMode, colorTheme: $colorTheme, notificationsEnabled: $notificationsEnabled)';
 }
 
 
@@ -253,7 +253,7 @@ abstract mixin class _$AppSettingsCopyWith<$Res> implements $AppSettingsCopyWith
   factory _$AppSettingsCopyWith(_AppSettings value, $Res Function(_AppSettings) _then) = __$AppSettingsCopyWithImpl;
 @override @useResult
 $Res call({
- AppLanguage language, ThemeMode themeMode, int colorSchemeSeed, bool notificationsEnabled
+ AppLanguage language, ThemeMode themeMode, AppColorTheme colorTheme, bool notificationsEnabled
 });
 
 
@@ -270,12 +270,12 @@ class __$AppSettingsCopyWithImpl<$Res>
 
 /// Create a copy of AppSettings
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? language = null,Object? themeMode = null,Object? colorSchemeSeed = null,Object? notificationsEnabled = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? language = null,Object? themeMode = null,Object? colorTheme = null,Object? notificationsEnabled = null,}) {
   return _then(_AppSettings(
 language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as AppLanguage,themeMode: null == themeMode ? _self.themeMode : themeMode // ignore: cast_nullable_to_non_nullable
-as ThemeMode,colorSchemeSeed: null == colorSchemeSeed ? _self.colorSchemeSeed : colorSchemeSeed // ignore: cast_nullable_to_non_nullable
-as int,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
+as ThemeMode,colorTheme: null == colorTheme ? _self.colorTheme : colorTheme // ignore: cast_nullable_to_non_nullable
+as AppColorTheme,notificationsEnabled: null == notificationsEnabled ? _self.notificationsEnabled : notificationsEnabled // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
