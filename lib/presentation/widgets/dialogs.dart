@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/theme/languages.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/app_dialog.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/widgets/color_picker_multi_types.dart';
 

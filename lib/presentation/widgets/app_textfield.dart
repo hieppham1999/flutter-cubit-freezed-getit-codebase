@@ -1,5 +1,6 @@
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -36,7 +37,7 @@ class AppTextField extends StatelessWidget {
         cursorColor: Colors.blue,
         decoration: InputDecoration(
           border: InputBorder.none,
-          hintText: 'Enter text here...',
+          hintText: Languages.translate.textFieldHint,
           contentPadding: const EdgeInsets.symmetric(vertical: 12),
           suffixIcon: suffixIcon,
           // IconButton(

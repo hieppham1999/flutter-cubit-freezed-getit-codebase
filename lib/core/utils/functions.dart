@@ -11,9 +11,8 @@ extension PageControllerExtension on PageController {
 }
 
 extension ColorGenerate on Color {
-  bool get isLightColor{
+  bool get isLightColor {
     final hsl = HSLColor.fromColor(this);
-    print(hsl.lightness);
     return hsl.lightness > 0.5;
   }
 }

@@ -1,0 +1,7 @@
+{
+  "FLAVOR": "staging",
+  "APP_NAME": "[STG] My Codebase App",
+  "API_BASE_URL": "https://staging.example.com",
+  "ENABLE_LOGGING": true,
+  "ENABLE_CRASH_REPORTING": true
+}

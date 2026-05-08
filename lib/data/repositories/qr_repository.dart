@@ -1,5 +1,6 @@
 import 'package:flutter_cubit_freezed_getit_codebase/data/datasources/local/database/qr_local_data_source.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/entities/qr_model/qr_model.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/domain/exceptions/app_exception.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/domain/repositories/qr_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,6 +12,14 @@ class QrRepositoryImpl implements QrRepository {
 
   @override
   Future<void> saveQr(QrModel qrModel) async {
-    await localDataSource.insert(qrModel);
+    try {
+      await localDataSource.insert(qrModel);
+    } catch (e, stackTrace) {
+      throw CacheException(
+        message: 'Failed to save QR code',
+        cause: e,
+        stackTrace: stackTrace,
+      );
+    }
   }
 }

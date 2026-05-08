@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/navigation/app_routes.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/app_setting/app_setting_page.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/presentation/screens/qr_create/qr_create_page.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/utils/app_logger.dart';
+import 'package:flutter_cubit_freezed_getit_codebase/app/base/app_logger.dart';
 import 'package:get_it/get_it.dart';
 
 class AppRouter {
@@ -31,7 +32,9 @@ class AppRouter {
   static Route<dynamic> _errorRoute() {
     return MaterialPageRoute(
       builder:
-          (_) => const Scaffold(body: Center(child: Text('Page not found'))),
+          (_) => Scaffold(
+            body: Center(child: Text(Languages.translate.pageNotFound)),
+          ),
     );
   }
 }
