@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/generated/l10n/app_localizations.dart';
 
+/// The single gate widgets use to read theme / colours / text styles — do not
+/// scatter `Theme.of(context)` calls through widget code, go through the getters
+/// here.
+///
+/// Navigation deliberately does **not** live here: use `NavController`
+/// (`core/navigation/app_navigator.dart`). Two owners for the same back stack is
+/// how navigation bugs start, and a route pushed straight through
+/// `Navigator.of(context)` bypasses `AppRouter` entirely — leaving it with no
+/// `settings.name`, which is what makes `popUntil` clear the whole stack.
 extension BuildContextX on BuildContext {
   ThemeData get theme => Theme.of(this);
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
@@ -19,9 +28,4 @@ extension BuildContextX on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
 
   void hideKeyboard() => FocusScope.of(this).unfocus();
-
-  Future<T?> push<T>(Widget page) =>
-      Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => page));
-
-  void pop<T>([T? result]) => Navigator.of(this).pop(result);
 }

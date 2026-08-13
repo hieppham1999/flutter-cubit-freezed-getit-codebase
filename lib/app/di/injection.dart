@@ -20,6 +20,11 @@ abstract class LoggerModule {
   @prod
   @lazySingleton
   Logger get prodLogger => Logger(
+    // Release builds must not print `.d()` / `.i()`. `Logger` defaults to
+    // `Level.trace`, which means every state transition of every cubit — state
+    // contents included — is written to logcat on real user devices. Keep
+    // warnings and above so incidents are still diagnosable.
+    level: Level.warning,
     printer: PrettyPrinter(
       methodCount: 0,
       dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
@@ -29,6 +34,12 @@ abstract class LoggerModule {
   );
 
   @dev
+  // Must stay in sync with `Flavor.staging.value` — an annotation argument has
+  // to be a literal, so it cannot read the enum. Without this the `stg` flavor
+  // registers no `Logger` at all, `AppLogger` (a `@singleton` that depends on
+  // one) fails to construct, and `configureDependencies` throws before the
+  // first frame.
+  @Environment('stg')
   @lazySingleton
   Logger get devLogger => Logger(
     printer: PrettyPrinter(

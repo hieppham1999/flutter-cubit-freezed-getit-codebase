@@ -3,9 +3,14 @@ import 'package:flutter_cubit_freezed_getit_codebase/core/constants/constants.da
 /// Build flavors. The active flavor is selected at app start via
 /// `--dart-define-from-file=env/<flavor>.json` (see `main.dart`) and
 /// propagated to GetIt via `injectable`'s `@Environment(...)` annotations.
+///
+/// These [value]s are the shared name of a flavor across the whole project —
+/// the `env/<value>.json` file, the Android product flavor in
+/// `android/app/build.gradle.kts`, and the `@Environment('<value>')` bindings in
+/// `app/di/injection.dart` all have to spell it the same way.
 enum Flavor {
   dev('dev'),
-  staging('staging'),
+  staging('stg'),
   prod('prod');
 
   const Flavor(this.value);

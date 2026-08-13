@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cubit_freezed_getit_codebase/core/theme/dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+/// Spinner **inside the content area** — the `CubitStateBuilder` default.
+///
+/// The blocking full-screen overlay is not built here, it is `LoadingUtil.show()`:
+/// that one reference-counts its callers (two cubits waiting → one overlay) and
+/// carries a safety timer that closes an overlay whose caller forgot to
+/// `dismiss()`. An `AppLoadingOverlay` widget used to sit in this file doing the
+/// same job with neither of those, and with no call sites — it was removed.
 class AppLoadingView extends StatelessWidget {
   const AppLoadingView({super.key, this.size = 40, this.color});
 
@@ -12,41 +18,7 @@ class AppLoadingView extends StatelessWidget {
   Widget build(BuildContext context) {
     final indicatorColor = color ?? Theme.of(context).colorScheme.primary;
     return Center(
-      child: SpinKitRing(
-        size: size,
-        color: indicatorColor,
-        lineWidth: 3,
-      ),
-    );
-  }
-}
-
-class AppLoadingOverlay extends StatelessWidget {
-  const AppLoadingOverlay({super.key, this.message});
-
-  final String? message;
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Colors.black.withValues(alpha: 0.4),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const AppLoadingView(),
-            if (message != null) ...[
-              const SizedBox(height: AppSpacing.medium),
-              Text(
-                message!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.white,
-                    ),
-              ),
-            ],
-          ],
-        ),
-      ),
+      child: SpinKitRing(size: size, color: indicatorColor, lineWidth: 3),
     );
   }
 }
