@@ -19,7 +19,10 @@ class CubitStateBuilder<T> extends StatelessWidget {
     this.onRetry,
   });
 
-  final Cubit<CubitState> cubit;
+  /// Typed on `T`, not the raw `Cubit<CubitState>`: a raw bound lets a
+  /// `CubitStateBuilder<Foo>` accept a cubit emitting some other state type,
+  /// and the mismatch only surfaces at runtime inside [builder].
+  final Cubit<CubitState<T>> cubit;
   final ChildStateBuilder<T> builder;
   final ChildStateBuilder<T>? loadingBuilder;
   final ChildStateBuilder<T>? errorBuilder;
@@ -27,7 +30,7 @@ class CubitStateBuilder<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<Cubit<CubitState>, CubitState>(
+    return BlocConsumer<Cubit<CubitState<T>>, CubitState<T>>(
       bloc: cubit,
       listener: (context, state) {
         appLogger.d('${cubit.runtimeType}: New state -> $state');

@@ -1,3 +1,12 @@
+import java.io.FileInputStream
+import java.util.Properties
+
+// Single place to rename the app. `appId` is the base application id; each
+// flavor appends its own suffix below so dev / stg / prod can be installed side
+// by side on one device.
+val appDisplayName = "My Codebase App"
+val appId = "com.hieppt.flutter_cubit_freezed_codebase.flutter_cubit_freezed_getit_codebase"
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -5,8 +14,18 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// Release signing credentials live outside the repo (`android/key.properties`,
+// git-ignored). The file is deliberately optional: without it debug and profile
+// builds still work, and only `--release` fails — a fresh clone should not need
+// the keystore to run the app.
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
 android {
-    namespace = "com.hieppt.flutter_cubit_freezed_codebase.flutter_cubit_freezed_getit_codebase"
+    namespace = appId
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,8 +39,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.hieppt.flutter_cubit_freezed_codebase.flutter_cubit_freezed_getit_codebase"
+        applicationId = appId
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -30,11 +48,48 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
+        }
+    }
+
     buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+        getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = false
+            isShrinkResources = false
+        }
+
+        getByName("debug") {
+            isDebuggable = true
+        }
+    }
+
+    // Flavor names must match `Flavor.value` in `lib/core/config/environment.dart`
+    // and the `env/<flavor>.json` file names — `flutter run --flavor stg
+    // --dart-define-from-file=env/stg.json`.
+    flavorDimensions += "default"
+
+    productFlavors {
+        create("dev") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            resValue("string", "app_name", "[DEV] $appDisplayName")
+        }
+        create("stg") {
+            dimension = "default"
+            applicationIdSuffix = ".stg"
+            resValue("string", "app_name", "[STG] $appDisplayName")
+        }
+        create("prod") {
+            dimension = "default"
+            resValue("string", "app_name", appDisplayName)
         }
     }
 }

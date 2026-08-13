@@ -39,6 +39,7 @@ import 'package:logger/logger.dart' as _i974;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 const String _dev = 'dev';
+const String _stg = 'stg';
 const String _prod = 'prod';
 
 extension GetItInjectableX on _i174.GetIt {
@@ -57,12 +58,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i320.AppSettingRepository>(
       () => _i275.AppSettingRepositoryImpl(),
     );
-    gh.lazySingleton<_i974.Logger>(
-      () => loggerModule.devLogger,
-      registerFor: {_dev},
-    );
     gh.singleton<_i951.SettingsCubit>(
       () => _i951.SettingsCubit(gh<_i320.AppSettingRepository>()),
+    );
+    gh.lazySingleton<_i974.Logger>(
+      () => loggerModule.devLogger,
+      registerFor: {_dev, _stg},
     );
     gh.lazySingleton<_i974.Logger>(
       () => loggerModule.prodLogger,

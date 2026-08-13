@@ -1,13 +1,27 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '12.0'
+# platform :ios, '13.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
 
+# Every build configuration in Runner.xcodeproj has to be listed here. CocoaPods
+# defaults anything it does not recognise to :release — which would quietly build
+# the pods with release settings for a `Debug-dev` run. Add a line whenever a
+# flavor is added (see `productFlavors` in android/app/build.gradle.kts and
+# `Flavor` in lib/core/config/environment.dart — the three must agree).
 project 'Runner', {
   'Debug' => :debug,
   'Profile' => :release,
   'Release' => :release,
+  'Debug-dev' => :debug,
+  'Debug-stg' => :debug,
+  'Debug-prod' => :debug,
+  'Profile-dev' => :release,
+  'Profile-stg' => :release,
+  'Profile-prod' => :release,
+  'Release-dev' => :release,
+  'Release-stg' => :release,
+  'Release-prod' => :release,
 }
 
 def flutter_root

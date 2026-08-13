@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# FVM version cache — the pinned version lives in .fvmrc, which IS committed.
+.fvm/

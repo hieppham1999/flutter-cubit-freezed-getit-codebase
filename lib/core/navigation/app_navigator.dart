@@ -27,6 +27,27 @@ class NavController {
       NavigatorKey.key.currentState
           ?.popAndPushNamed(route.path, arguments: route);
 
+  /// Opens [route] and clears the stack below it (or down to [heldRouteName]).
+  ///
+  /// The typed sibling of [pushNamedAndRemoveUntil]. That one takes a `Map` as
+  /// its `arguments`, but `AppRouter.onGenerateRoute` rejects anything that is
+  /// not an [AppRoutes] and falls through to the "page not found" screen — so
+  /// it cannot actually reach a real route.
+  ///
+  /// Use this for "replace the whole flow" transitions (finish onboarding, go
+  /// to home). `pushReplacementNamed` only swaps the topmost route and leaves
+  /// everything below it on the stack.
+  static Future<T?>? pushNamedAndRemoveUntilRoute<T extends Object?>(
+    AppRoutes route, {
+    String? heldRouteName,
+  }) => NavigatorKey.key.currentState?.pushNamedAndRemoveUntil<T>(
+    route.path,
+    heldRouteName != null
+        ? ModalRoute.withName(heldRouteName)
+        : (Route<dynamic> _) => false,
+    arguments: route,
+  );
+
   static pushNamedAndRemoveUntil(String newRouteName,
       {String? heldRouteName, Map<String, dynamic>? arguments}) {
     NavigatorKey.key.currentState?.pushNamedAndRemoveUntil(
@@ -50,8 +71,8 @@ class NavController {
     popUntilUnIdentifiedRoute([routeName], result: result);
   }
 
-  /// if passing data ([result] != null), type of [arguments] must be defined as
-  /// Map<String, dynamic> in [settings] of [onGenerateRoute]
+  /// if passing data ([result] != null), type of `arguments` must be defined as
+  /// `Map<String, dynamic>` in `settings` of `onGenerateRoute`
   static void popUntilUnIdentifiedRoute(List<String> routeNames,
       {dynamic result}) {
     try {

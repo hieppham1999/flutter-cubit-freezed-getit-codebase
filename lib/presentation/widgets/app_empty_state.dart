@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/app/languages.dart';
 import 'package:flutter_cubit_freezed_getit_codebase/core/theme/dimensions.dart';
 
+/// Icon → title → explanation → action, centred in the content area.
+///
+/// Also the layout `AppErrorView` renders through: empty and error are the same
+/// shape with different content, and keeping two hand-built copies is how two
+/// screens that mean the same thing slowly drift apart.
 class AppEmptyState extends StatelessWidget {
   const AppEmptyState({
     super.key,
     this.icon = Icons.inbox_outlined,
+    this.iconColor,
     this.title,
     this.subtitle,
     this.action,
   });
 
   final IconData icon;
+
+  /// Defaults to a muted `onSurface`. `AppErrorView` passes `colorScheme.error`.
+  final Color? iconColor;
   final String? title;
   final String? subtitle;
   final Widget? action;
@@ -28,7 +37,9 @@ class AppEmptyState extends StatelessWidget {
             Icon(
               icon,
               size: 64,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
+              color:
+                  iconColor ??
+                  theme.colorScheme.onSurface.withValues(alpha: 0.4),
             ),
             const SizedBox(height: AppSpacing.medium),
             Text(
